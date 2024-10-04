@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .active-nav {
+    @apply text-yellow-150 relative before:w-full before:h-[2px] before:absolute before:-bottom-1 before:bg-yellow-150 before:rounded-tr-md before:rounded-tl-md;
+  }
+  .section {
+    @apply w-full md:w-[calc(100%-300px)] md:mx-auto my-0 py-9 px-4 md:px-0;
+  }
+  .gradient-right {
+    @apply bg-gradient-to-r;
+    background: linear-gradient(
+      0deg,
+      rgba(231, 241, 255, 1) 0%,
+      rgba(237, 244, 255, 1) 50%,
+      rgba(178, 210, 255, 1) 100%
+    );
+  }
+  .gradient-bottom {
+    @apply bg-gradient-to-b;
+    background: linear-gradient(
+      180deg,
+      rgba(233, 241, 253, 1) 0%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+  .resize-handle:hover {
+    @apply bg-gradient-to-r;
+    background: linear-gradient(
+      90deg,
+      rgba(177, 209, 255, 0.33519345238095233) 0%,
+      rgba(177, 209, 255, 1) 100%
+    );
+  }
+  .btn img {
+    @apply transition-all duration-100;
+  }
+  .btn:hover img {
+    @apply translate-x-1;
+  }
+
+  /* accordion menu */
+  .accordion-menu-trigger {
+    text-align: left;
+  }
+
+  .accordion-menu-trigger,
+  .accordion-menu-content .item {
+    @apply px-3 py-4 rounded-[12px];
+  }
+  .accordion-menu-content {
+    @apply pt-4;
+  }
+  .accordion-menu-content {
+    @apply pl-8 relative before:absolute before:top-0 before:left-4 before:w-[1px] before:h-full before:bg-blue-200;
+  }
+  .accordion-menu-trigger:hover,
+  .accordion-menu-trigger[data-state="open"] {
+    @apply bg-blue-150;
+  }
+  .accordion-menu-content .item {
+    @apply bg-blue-100;
+  }
+  .accordion-menu-content .item.active {
+    @apply relative bg-blue-400 text-white;
+  }
+  .accordion-menu-content .item.active p {
+    @apply text-white;
+  }
+  .accordion-menu-content .item.active:before {
+    @apply absolute -left-[15px];
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAxMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTAuNSAwTDguMzc4NiA3Ljg3ODZDOS41NTAxOCA5LjA1MDE4IDkuNTUwMTggMTAuOTQ5NyA4LjM3ODYgMTIuMTIxMkwwLjUgMTkuOTk5OEwtOS40OTk5MiA5Ljk5OTkyTDAuNSAwWiIgZmlsbD0iI0ZFQzkwMCIvPgo8L3N2Zz4K");
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+  }
+  .accordion-menu-content .item:hover {
+    @apply bg-blue-400;
+  }
+  .accordion-menu-content .item:hover p {
+    @apply text-white;
+  }
+  /* .accordion-menu-content[data-state="open"]:hover p {
+    @apply text-white;
+  } */
+  .menu-ellipsis {
+    width: 230px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+input,
+textarea,
+select {
+  font-size: 16px;
+}
+
+.content-container {
+  padding: 20px 25px !important;
+}
+.job-detail-container {
+  padding: 24px !important;
+  background-color: #e9f1fd !important;
+  border-radius: 16px !important;
+}
+ul {
+  list-style: disc inside;
+}
+ul li {
+  padding: 5px;
+  margin-left: 2%;
+}
+
+.react-modal-sheet-container {
+  height: calc(100% - env(safe-area-inset-top) - 0px) !important;
+}
